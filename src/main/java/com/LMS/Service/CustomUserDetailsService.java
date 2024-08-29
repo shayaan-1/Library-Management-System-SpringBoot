@@ -1,6 +1,5 @@
 package com.LMS.Service;
 
-
 import com.LMS.Entites.User;
 import com.LMS.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +16,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // No need to cast the result, as it is already of type User
+        // Retrieve the User entity from the repository
         User user = (User) userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        // Return the User object directly as it implements UserDetails
+        // Return the User object, which implements UserDetails
         return user;
     }
 
+    // Method to save a User entity
     public User save(User user) {
         return userRepository.save(user);
     }
