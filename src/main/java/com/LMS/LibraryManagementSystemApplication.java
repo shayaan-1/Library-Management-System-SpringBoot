@@ -1,4 +1,4 @@
-package com.LMS.LibraryManagementSystem;
+package com.LMS;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
