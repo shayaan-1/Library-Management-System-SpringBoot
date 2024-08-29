@@ -17,17 +17,23 @@ public class BorrowingRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "borrow_date", nullable = false)
     private Date borrowDate;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "return_date")
     private Date returnDate;
+
+    @Column(name = "is_returned", nullable = false)
+    private boolean isReturned;
 }
+
